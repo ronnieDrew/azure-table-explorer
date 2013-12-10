@@ -1,0 +1,15 @@
+{{#view App.BootstrapModalView backdropClass="modal-backdrop-transparent"}}
+  <div class="modal-header">
+      <button type="button" class="close" {{action close target="view"}}>&times;</button>
+
+      <h3 id="modal_error_subject">Error</h3>
+  </div>
+
+  <div class="modal-body">
+    <p id="modal_error_text">Whoops, something has gone wrong!</p>
+  </div>
+
+  <div class="modal-footer">
+    <a class="btn" {{action close target="view"}}>Close</a>
+  </div>
+{{/view}}

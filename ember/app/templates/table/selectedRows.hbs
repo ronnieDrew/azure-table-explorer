@@ -1,0 +1,42 @@
+<p>&nbsp;</p>
+<ul {{bindAttr class=":nav :nav-list hasSelectedRows:show:hide"}}>
+    <li class="nav-header">
+       <span>ROW DETAILS</span>
+       <span>({{currentDisplayIndex}}/{{selectedRows.length}})</span>
+       <span class="pull-right">
+           <i {{action "movePrevious" on="click"}} {{bindAttr class=":icon-btn :icon :icon-chevron-left movePreviousEnabled:enabled:disabled"}}></i>
+           <i {{action "moveNext" on="click"}} {{bindAttr class=":icon-btn :icon :icon-chevron-right moveNextEnabled:enabled:disabled"}}></i>
+       </span>
+    </li>
+    <li>
+       {{#with currentRow}}
+        <small>
+            <p>
+              <strong>ID</strong>
+              <br/>
+              {{input type="text" value=_.id disabled=true}}
+            </p>
+            <p>
+              <strong>Timestamp</strong>
+              <br/>
+              <span>{{Timestamp}}</span>
+            </p>
+            <p>
+              <strong>Link</strong>
+              <br/>
+              {{input type="text" value=_.link disabled=true}}
+            </p>
+            <p>
+              <strong>Updated</strong>
+              <br/>
+              <span>{{_.updated}}</span>
+            </p>
+            <p>
+              <strong>ETag</strong>
+              <br/>
+              <span>{{_.etag}}</span>
+            </p>
+        </small>
+        {{/with}}
+    </li>
+</ul>

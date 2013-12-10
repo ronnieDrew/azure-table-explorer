@@ -1,0 +1,28 @@
+<div class="row">
+	<div class="span9" id="results">
+		{{outlet}}
+	</div>
+
+	<div class="span3">
+		<h1 id="accountName">{{storageAccountName}}</h1>
+
+		<div id="tableList">
+			<ul class="nav nav-list">
+				<li class="nav-header">Tables</li>
+			{{#each table in tables}}
+				<li>
+					{{#linkTo table.page table App.Page.FIRSTPAGE}}
+						{{table.id}}
+					{{/linkTo}}
+				</li>
+			{{else}}
+				<li>No tables defined for this storage account.</li>
+			{{/each}}
+			</ul>			
+		</div>
+	
+		<div id="rowDetails">
+			{{outlet "selectedRowsOutlet"}}
+		</div>
+	</div>
+</div>

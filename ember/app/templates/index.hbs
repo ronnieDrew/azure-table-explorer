@@ -1,0 +1,27 @@
+<div id="credentials" class="hero-unit">
+  <h1>Explore a storage account</h1>
+  
+  <div id="nossl" {{bindAttr class=":alert :alert-block usingSSL:hide:show"}}>
+    <!-- <button type="button" class="close" data-dismiss="alert">&times;</button> -->
+    <h4>Security Warning!</h4>
+    <p>You are not currently browsing this site through an encrypted SSL session. If you submit your 
+    Windows Azure storage account name and access key, this information will be sent over the 
+    wire unencrypted. Don't do it. Please.</p>
+  </div>
+
+  <p id="ssl" {{bindAttr class="usingSSL:show:hide"}}>
+    You're using an SSL connection with this cloud service - your credentials will be transmitted securely. The credentials are sent with every dynamic request and immediately destroyed.
+  </p>
+
+  <p>
+    {{view Ember.TextField valueBinding="storageAccount" placeholder="Storage account" class="span5"}}
+  </p>
+  <div class="input-prepend">
+    <span class="add-on"><i class="icon-lock"></i></span>
+    {{view Ember.TextField valueBinding="storageKey" placeholder="Access account" type="password" class="span5"}}
+  </div>
+  <p>
+    <button class="btn btn-primary" {{action login}} {{bindAttr disabled="loginDisabled"}} id="setCredentials">Explore &raquo;</button> 
+    <a href="https://github.com/jeffwilcox/azure-table-explorer" class="btn" target="_blank">App source &raquo;</a>
+  </p>
+</div>

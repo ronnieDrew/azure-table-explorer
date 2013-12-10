@@ -1,0 +1,62 @@
+<table class="table table-condensed">
+  <thead>
+  	{{#each column in columnHeaders}}
+  		<th>
+  			<p>{{column}}</p>
+  		</th>
+  	{{/each}}
+  </thead>
+  <tbody>
+  {{#each row in rows}}
+
+    {{#if row.partitionKeyChanged}}
+      <tr class="partition-key-row">
+        <td></td>
+        <td colspan="2">
+          <h3>{{row.PartitionKey}}</h3>
+        </td>
+        <td>
+          <p class="text-right">
+            <small>PARTITION KEY</small>
+          </p>
+        </td>
+      </tr>    
+    {{/if}}
+  
+    <tr 
+      {{action "toggleRowSelection" row on="click"}} 
+      {{bindAttr class=":master-row row.isSelected:master-row-selected"}}
+    >
+      <td>
+        {{view Ember.Checkbox checkedBinding="row.isSelected" bubbles=false}}
+      </td>
+      {{#each column in ../columns}}
+        <td>
+          <p>
+            {{tableCell ../row}}
+          </p>
+        </td>
+      {{/each}}
+    </tr>
+  {{/each}}
+
+  </tbody>
+</table>
+
+<div class="pagination">
+  <ul>
+    {{#each pageLink in paginationLinks}}
+    <li {{bindAttr class="pageLink.isActive:active pageLink.disabled"}}>
+        {{#unless pageLink.disabled}}
+          {{#linkTo table.page pageLink}}
+            {{safeString pageLink.displayText}}
+          {{/linkTo}}
+        {{/unless}}
+
+        {{#if pageLink.disabled}}
+          <span class="disabled">{{safeString pageLink.displayText}}</span>
+        {{/if}}
+    </li>
+    {{/each}}
+  </ul>
+</div>
